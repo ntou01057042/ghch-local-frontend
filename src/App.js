@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Sidebar from './Sidebar';
+import CreateTeamBlock from './CreateTeamBlock';
+import OptionSection from './OptionSection';
 
 function App() {
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const toggleSettings = () => {
+    setIsSettingsOpen(!isSettingsOpen);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {isSettingsOpen && (
+        <div className="overlay" onClick={toggleSettings}>
+          <div className='info-section'>
+            <OptionSection
+              isVisible={isSettingsOpen}
+              onClose={() => setIsSettingsOpen(false)}
+            />
+          </div>
+
+        </div>
+      )}
+      <div className="app">
+        <Sidebar toggleSettings={toggleSettings} />
+        <main className="content">
+          <div className="createTeamBlock">
+            <CreateTeamBlock />
+          </div>
+        </main>
+      </div>
+    </>
   );
 }
 
