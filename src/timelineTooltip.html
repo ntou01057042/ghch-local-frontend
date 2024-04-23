@@ -48,8 +48,9 @@
                 var tooltipChart = new google.visualization.LineChart(hiddenDiv);
 
                 google.visualization.events.addListener(tooltipChart, 'ready', function () {
-                    var tooltipImg = '<img src="' + tooltipChart.getImageURI() + '">';
-                    primaryData[i][2] = tooltipImg;
+                    let tooltipImg = '<img src="' + tooltipChart.getImageURI() + '">';
+                    let commitDetail = '<p style="margin-left:50px">' + 'feat: initial commit' + '<p>';
+                    primaryData[i][2] = tooltipImg + commitDetail;
                 });
                 tooltipChart.draw(view, tooltipOptions);
             }
