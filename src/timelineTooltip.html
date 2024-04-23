@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.load('current', {'packages':['timeline']});
+        google.charts.setOnLoadCallback(drawTooltipCharts);
+        var primaryData = [
+            ['main', 'main', ,new Date(2024, 2, 30), new Date(Date.now())],
+            ['Sung', 'feat:new-interface', ,new Date(2024, 2, 31), new Date(2024, 3, 2)],
+            ['Wu', 'feat:update-api', ,new Date(2024, 3, 1), new Date(2024, 3, 2)],
+            ['Chen', 'fix:api-problem', ,new Date(2024, 3, 3), new Date(2024, 3, 5)],
+            ['Sung, Chen', 'fix:interface-problem', ,new Date(2024, 3, 4), new Date(2024, 3, 6)]
+        ];
+
+        var tooltipData = [
+            ['date','main', 'Sung', 'Wu', 'Chen', 'Sung, Chen'],
+            [new Date(Date.now() - 9*86400000), , 3, 1.2, 2.4, 4],
+            [new Date(Date.now() - 6*86400000), , 1, 1.2, 3.4, 2],
+            [new Date(Date.now() - 3*86400000), , 3.6, 1.25, 2.4, 3],
+            [new Date(Date.now()), , 2, 5.2, 5.2, 4.4],
+        ];
+
+        var primaryOptions = {
+            title: 'Team branch chart',
+            tooltip: { isHtml: true }
+        };
+
+        var tooltipOptions = {
+            title: 'Commit frequency',
+            legend: 'none',
+            hAxis: {
+                format: 'M/d',
+            }
+        };
+
+
+        function drawTooltipCharts() {
+
+            var data = new google.visualization.arrayToDataTable(tooltipData);
+            var view = new google.visualization.DataView(data);
+
+            for (var i = 0; i < primaryData.length; i++) {
+                view.setColumns([0, i + 1]);
+                var hiddenDiv = document.getElementById('hidden_div');
+                var tooltipChart = new google.visualization.LineChart(hiddenDiv);
+
+                google.visualization.events.addListener(tooltipChart, 'ready', function () {
+                    var tooltipImg = '<img src="' + tooltipChart.getImageURI() + '">';
+                    primaryData[i][2] = tooltipImg;
+                });
+                tooltipChart.draw(view, tooltipOptions);
+            }
+            drawPrimaryChart();
+        }
+
+        function drawPrimaryChart() {
+            var dataTable = new google.visualization.DataTable();
+            dataTable.addColumn({ type: 'string', id: 'branch-type' });
+            dataTable.addColumn({ type: 'string', id: 'branch-name' });
+            dataTable.addColumn({
+                type: 'string',
+                label: 'Tooltip Chart',
+                role: 'tooltip',
+                'p': { 'html': true }
+            });
+            dataTable.addColumn({ type: 'date', id: 'Start' });
+            dataTable.addColumn({ type: 'date', id: 'End' });
+
+            
+
+            dataTable.addRows(primaryData);
+            var visibleDiv = document.getElementById('visible_div');
+            var PrimaryChart = new google.visualization.Timeline(visibleDiv);
+            PrimaryChart.draw(dataTable, primaryOptions);
+        }
+        // var container = document.getElementById('example3.1');
+        // var chart = new google.visualization.Timeline(container);
+        // var dataTable = new google.visualization.DataTable();
+        // dataTable.addColumn({ type: 'string', id: 'branch-type' });
+        // dataTable.addColumn({ type: 'string', id: 'branch-name' });
+        // // dataTable.addColumn({ type: 'string', role: 'tooltip' });
+        // dataTable.addColumn({ type: 'date', id: 'Start' });
+        // dataTable.addColumn({ type: 'date', id: 'End' });
+        // dataTable.addRows([
+
+        //     // ['Vice President', 'Aaron Burr', new Date(1801, 2, 4), new Date(1805, 2, 4)],
+        //     // ['Vice President', 'George Clinton', new Date(1805, 2, 4), new Date(1812, 3, 20)],
+        //     // ['Secretary of State', 'John Jay', new Date(1789, 8, 25), new Date(1790, 2, 22)],
+        //     // ['Secretary of State', 'Thomas Jefferson', new Date(1790, 2, 22), new Date(1793, 11, 31)],
+        //     // ['Secretary of State', 'Edmund Randolph', new Date(1794, 0, 2), new Date(1795, 7, 20)],
+        //     // ['Secretary of State', 'Timothy Pickering', new Date(1795, 7, 20), new Date(1800, 4, 12)],
+        //     // ['Secretary of State', 'Charles Lee', new Date(1800, 4, 13), new Date(1800, 5, 5)],
+        //     // ['Secretary of State', 'John Marshall', new Date(1800, 5, 13), new Date(1801, 2, 4)],
+        //     // ['Secretary of State', 'Levi Lincoln', new Date(1801, 2, 5), new Date(1801, 4, 1)],
+        //     // ['Secretary of State', 'James Madison', new Date(1801, 4, 2), new Date(1809, 2, 3)]
+        // ]);
+
+        // chart.draw(dataTable);
+        // }
+    </script>
+</head>
+
+<body>
+    <div id="hidden_div" style="display: none;"></div>
+    <div id="visible_div" style="height: 300px;"></div>
+</body>
+
+</html>
