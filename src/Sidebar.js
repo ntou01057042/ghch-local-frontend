@@ -60,14 +60,13 @@ const Sidebar = ({ toggleSettings }) => {
                         </div>
                     )}
                 </div>
-                <nav>
+                <nav className="menu-item">
                     <ul>
-                        <li><Link to="/">創建團隊</Link></li>
                         <li><Link to="/team-overview">團隊綜觀圖</Link></li>
                     </ul>
                 </nav>
                 <div className="settings">
-                    <button className="create-team-button">建立新團隊</button>
+                    <button className="create-team-button"><Link to="/">建立新團隊</Link></button>
                     <div className="settings-icon" onClick={toggleSettings}></div>
                 </div>
             </div>

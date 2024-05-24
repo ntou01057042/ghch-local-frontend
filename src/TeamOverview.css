@@ -1,0 +1,10 @@
+.team-overview {
+    width: 100%;
+    background: #FFFFFF;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /*position*/
+    display: flex;
+    justify-content: center;
+}
