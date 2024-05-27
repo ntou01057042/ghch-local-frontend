@@ -65,6 +65,11 @@ const Sidebar = ({ toggleSettings }) => {
                         <li><Link to="/team-overview">團隊綜觀圖</Link></li>
                     </ul>
                 </nav>
+                <nav className="menu-item">
+                    <ul>
+                        <li><Link to="/PRDiscussion">PR 討論區</Link></li>
+                    </ul>
+                </nav>
                 <div className="settings">
                     <button className="create-team-button"><Link to="/">建立新團隊</Link></button>
                     <div className="settings-icon" onClick={toggleSettings}></div>
