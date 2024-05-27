@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: row;
     padding: 20px;
+    height: 100%;
 }
 
 .pr-title {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -19,7 +19,8 @@
 }
 
 .status.open {
-    background-color: #99E7FF;
+    background-color: #4CAF50;
+    margin-left: 10px;
 }
 
 .discussion-container {
@@ -43,7 +44,7 @@
 }
 
 .reviewers-section {
-    height: 100%;
+    align-items: center;
     display: flex;
     flex-direction: column;
     background-color: #6D6D8E;
@@ -75,11 +76,11 @@
 }
 
 .reviewer.approved {
-    background-color: #99E7FF;
+    background-color: #4CAF50;
 }
 
 .reviewer.pending {
-    background-color: #FFA099;
+    background-color: #C0392D;
 }
 
 .add-reviewer {
@@ -125,6 +126,14 @@
 .input-section {
     display: flex;
     flex-direction: column;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .input-section textarea {
