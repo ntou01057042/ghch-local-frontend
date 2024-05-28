@@ -24,8 +24,8 @@ const BranchChart = ({ primaryData, tooltipData }) => {
         script.src = 'https://www.gstatic.com/charts/loader.js';
         script.async = true;
         script.onload = () => {
-            window.google.charts.load('current', { package: ['timeline'] });
-            window.google.charts.load('current', { package: ['corechart'] });
+            window.google.charts.load('current', { packages: ['timeline'] });
+            window.google.charts.load('current', { packages: ['corechart'] });
             window.google.charts.setOnLoadCallback(drawTooltipCharts);
         }
         document.body.appendChild(script);
@@ -37,8 +37,8 @@ const BranchChart = ({ primaryData, tooltipData }) => {
 
         for (let i = 0; i < primaryData.length; i++) {
             view.setColumns([0, i + 1]);
-            var hiddenDiv = document.getElementById('hidden_div');
-            var tooltipChart = new window.google.visualization.LineChart(hiddenDiv);
+            const hiddenDiv = document.getElementById('hidden_div');
+            const tooltipChart = new window.google.visualization.LineChart(hiddenDiv);
 
             window.google.visualization.events.addListener(tooltipChart, 'ready', function () {
                 let tooltipImg = '<img src="' + tooltipChart.getImageURI() + '">';
@@ -70,8 +70,8 @@ const BranchChart = ({ primaryData, tooltipData }) => {
 
     return (
         <>
-            <div className='hidden_div'></div>
-            <div className='branch_chart'></div>
+            <div id='hidden_div' style={{display: 'none'}}></div>
+            <div id='branch_chart'></div>
         </>
     );
 };

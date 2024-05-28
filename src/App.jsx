@@ -5,6 +5,7 @@ import CreateTeamBlock from './CreateTeamBlock';
 import OptionSection from './OptionSection';
 import BranchChart from './BranchChart';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import TeamOverview from './TeamOverview';
 
 const primaryData = [
   ['main', 'main', , new Date(2024, 2, 30), new Date(Date.now())],
@@ -37,6 +38,7 @@ function App() {
         <Route path="/" element={<CreateTeamBlock />} />
         <Route path="/option" element={<OptionSection isVisible={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />} />
         <Route path="/branchchart" element={<BranchChart primaryData={primaryData} tooltipData={tooltipData} />} />
+        <Route path="/team-overview" element={<TeamOverview />} />
       </Routes>
     </Router>
     // <>
