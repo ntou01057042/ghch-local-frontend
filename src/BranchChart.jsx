@@ -1,101 +1,77 @@
-import React, { useEffect } from 'react';
-import { Chart } from 'react-google-charts';
+import React, { useEffect, useState } from 'react';
 
-export const settingData = [
-    [
-        { type: 'string', id: 'branch-type' },
-        { type: 'string', id: 'branch-name' },
-        {
-            type: 'string',
-            label: 'Tooltip Chart',
-            role: 'tooltip',
-            'p': { 'html': true }
-        },
-        { type: 'date', id: 'Start' },
-        { type: 'date', id: 'End' }
-    ]
-];
-
-export const options = {
+const primaryOptions = {
     title: 'Team branch chart',
     colors: ['#475468', '#365f9b', '#c6cfdc'],
-    tooltip: { isHtml: true },
+    allowHtml: true,
     explorer: { axis: 'horizontal' },
     width: 1000
 };
 
+const tooltipOptions = {
+    title: 'Commit frequency',
+    legend: 'none',
+    hAxis: {
+        format: 'M/d',
+    }
+};
+
 const BranchChart = ({ primaryData, tooltipData }) => {
-    console.log('hello');
-    // useEffect(() => {
-    //     if (window.google) {
-    //         window.google.charts.load('current', { packages: ['corechart', 'timeline'] });
-    //         window.google.charts.setOnLoadCallback(drawTooltipCharts);
-    //     }
+    const [chartData, setChartData] = useState(primaryData);
 
-    //     function drawTooltipCharts() {
-    //         const data = new window.google.visualization.arrayToDataTable(tooltipData);
-    //         const view = new window.google.visualization.DataView(data);
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://www.gstatic.com/charts/loader.js';
+        script.async = true;
+        script.onload = () => {
+            window.google.charts.load('current', { package: ['timeline'] });
+            window.google.charts.load('current', { package: ['corechart'] });
+            window.google.charts.setOnLoadCallback(drawTooltipCharts);
+        }
+        document.body.appendChild(script);
+    }, []);
 
-    //         for (let i = 0; i < primaryData.length; i++) {
-    //             view.setColumns([0, i + 1]);
-    //             const hiddenDiv = document.getElementById('hidden_div');
-    //             const tooltipChart = new window.google.visualization.LineChart(hiddenDiv);
+    const drawTooltipCharts = () => {
+        const data = new window.google.visualization.arrayToDataTable(tooltipData);
+        const view = new window.google.visualization.DataView(data);
 
-    //             window.google.visualization.events.addListener(tooltipChart, 'ready', function () {
-    //                 let tooltipImg = '<img src="' + tooltipChart.getImageURI() + '">';
-    //                 let commitDetail = '<p style="margin-left:50px">' + 'feat: initial commit' + '<p>';
-    //                 primaryData[i][2] = tooltipImg + commitDetail;
-    //                 console.log(primaryData[i][2]);
-    //             });
-    //             tooltipChart.draw(view, {
-    //                 title: 'Commit frequency',
-    //                 legend: 'none',
-    //                 hAxis: { format: 'M/d' }
-    //             });
-    //         }
-    //         // drawPrimaryChart();
-    //         console.log('hi');
-    //     }
+        for (let i = 0; i < primaryData.length; i++) {
+            view.setColumns([0, i + 1]);
+            var hiddenDiv = document.getElementById('hidden_div');
+            var tooltipChart = new window.google.visualization.LineChart(hiddenDiv);
 
-    //     // function drawPrimaryChart() {
-    //     //     console.log('hello');
-    //     //     const dataTable = new window.google.visualization.DataTable();
-    //     //     dataTable.addColumn({ type: 'string', id: 'branch-type' });
-    //     //     dataTable.addColumn({ type: 'string', id: 'branch-name' });
-    //     //     dataTable.addColumn({
-    //     //         type: 'string',
-    //     //         label: 'Tooltip Chart',
-    //     //         role: 'tooltip',
-    //     //         p: { html: true }
-    //     //     });
-    //     //     dataTable.addColumn({ type: 'date', id: 'Start' });
-    //     //     dataTable.addColumn({ type: 'date', id: 'End' });
+            window.google.visualization.events.addListener(tooltipChart, 'ready', function () {
+                let tooltipImg = '<img src="' + tooltipChart.getImageURI() + '">';
+                let commitDetail = '<p style="margin-left:50px">' + 'feat: initial commit' + '<p>';
+                primaryData[i][2] = tooltipImg + commitDetail;
+            });
+            tooltipChart.draw(view, tooltipOptions);
+        }
+        drawPrimaryChart();
+    }
 
-    //     //     dataTable.addRows(primaryData);
-    //     //     const visibleDiv = document.getElementById('visible_div');
-    //     //     const PrimaryChart = new window.google.visualization.Timeline(visibleDiv);
-    //     //     PrimaryChart.draw(dataTable, {
-    //     //         title: 'Team branch chart',
-    //     //         colors: ['#475468', '#365f9b', '#c6cfdc'],
-    //     //         tooltip: { isHtml: true },
-    //     //         explorer: { axis: 'horizontal' },
-    //     //         width: 1000
-    //     //     });
-    //     //     console.log('use');
-    //     // }
-    // }, [primaryData, tooltipData]);
+    const drawPrimaryChart = () => {
+        const dataTable = new window.google.visualization.DataTable();
+        dataTable.addColumn({ type: 'string', id: 'branch-type' });
+        dataTable.addColumn({ type: 'string', id: 'branch-name' });
+        dataTable.addColumn({
+            type: 'string',
+            label: 'Tooltip Chart',
+            role: 'tooltip',
+            'p': { 'html': true }
+        });
+        dataTable.addColumn({ type: 'date', id: 'Start' });
+        dataTable.addColumn({ type: 'date', id: 'End' });
+        dataTable.addRows(primaryData);
+        var visibleDiv = document.getElementById('branch_chart');
+        var PrimaryChart = new window.google.visualization.Timeline(visibleDiv);
+        PrimaryChart.draw(dataTable, primaryOptions);
+    }
 
-    const data = settingData.concat(primaryData);
     return (
         <>
-            {/* <div id="hidden_div" style={{ display: 'none' }}></div> */}
-            <Chart
-                chartType="Timeline"
-                data={data}
-                width="100%"
-                height="400px"
-                options={options}
-            />
+            <div className='hidden_div'></div>
+            <div className='branch_chart'></div>
         </>
     );
 };
