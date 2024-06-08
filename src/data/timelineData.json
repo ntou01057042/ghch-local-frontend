@@ -1,0 +1,130 @@
+{
+    "timelineData": [
+        {
+            "Branch": "Sung",
+            "Author": "Sung",
+            "style": "#99E7FF",
+            "Start": "2024-04-01",
+            "End": "2024-04-04"
+        },
+        {
+            "Branch": "Sung",
+            "Author": "Sung",
+            "style": "#47C5EB",
+            "Start": "2024-04-05",
+            "End": "2024-04-06"
+        },
+        {
+            "Branch": "Sung",
+            "Author": "Sung",
+            "style": "#008DB8",
+            "Start": "2024-04-06",
+            "End": "2024-04-09"
+        },
+        {
+            "Branch": "Sung",
+            "Author": "Sung",
+            "style": "#47C5EB",
+            "Start": "2024-04-12",
+            "End": "2024-04-18"
+        },
+        {
+            "Branch": "Sung",
+            "Author": "Sung",
+            "style": "#99E7FF",
+            "Start": "2024-04-19",
+            "End": "2024-04-26"
+        },
+        {
+            "Branch": "Chen",
+            "Author": "Chen",
+            "style": "#99FFA7",
+            "Start": "2024-04-05",
+            "End": "2024-04-06"
+        },
+        {
+            "Branch": "Chen",
+            "Author": "Chen",
+            "style": "#47E65C",
+            "Start": "2024-04-06",
+            "End": "2024-04-08"
+        },
+        {
+            "Branch": "Chen",
+            "Author": "Chen",
+            "style": "#009E15",
+            "Start": "2024-04-09",
+            "End": "2024-04-13"
+        },
+        {
+            "Branch": "Chen",
+            "Author": "Chen",
+            "style": "#47E65C",
+            "Start": "2024-04-15",
+            "End": "2024-04-17"
+        },
+        {
+            "Branch": "Chen",
+            "Author": "Chen",
+            "style": "#009E15",
+            "Start": "2024-04-19",
+            "End": "2024-04-20"
+        },
+        {
+            "Branch": "Chen",
+            "Author": "Chen",
+            "style": "#99FFA7",
+            "Start": "2024-04-21",
+            "End": "2024-04-23"
+        },
+        {
+            "Branch": "Wu",
+            "Author": "Wu",
+            "style": "#FFA099",
+            "Start": "2024-04-02",
+            "End": "2024-04-05"
+        },
+        {
+            "Branch": "Wu",
+            "Author": "Wu",
+            "style": "#FFA099",
+            "Start": "2024-04-07",
+            "End": "2024-04-11"
+        },
+        {
+            "Branch": "Wu",
+            "Author": "Wu",
+            "style": "#E0574D",
+            "Start": "2024-04-12",
+            "End": "2024-04-15"
+        },
+        {
+            "Branch": "Wu",
+            "Author": "Wu",
+            "style": "#B30C00",
+            "Start": "2024-04-15",
+            "End": "2024-04-16"
+        },
+        {
+            "Branch": "Wu",
+            "Author": "Wu",
+            "style": "#B30C00",
+            "Start": "2024-04-15",
+            "End": "2024-04-23"
+        },
+        {
+            "Branch": "Wu",
+            "Author": "Wu",
+            "style": "#FFA099",
+            "Start": "2024-04-23",
+            "End": "2024-04-24"
+        },
+        {
+            "Branch": "Wu",
+            "Author": "Wu",
+            "style": "#E0574D",
+            "Start": "2024-04-24",
+            "End": "2024-04-25"
+        }
+    ]
+}

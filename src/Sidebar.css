@@ -1,0 +1,118 @@
+.sidebar {
+    width: 300px;
+    background: #475468;
+    padding: 10px;
+    height: 100%;
+}
+
+.profile-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.avatar {
+    /*個人頭貼*/
+    background: #ddd;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 10px;
+}
+
+.menu-item {
+    background-color: #f2f5ff;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: background-color 0.3s;
+}
+
+
+.submenu {
+    padding-left: 20px;
+}
+
+.settings {
+    position: absolute;
+    bottom: 10px;
+    width: 280px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.settings-icon {
+    background-image: url('./img/gear.png');
+    background-size: contain;
+    position: absolute;
+    right: 0;
+    flex-grow: 0;
+    display: flex;
+    width: 45px;
+    height: 45px;
+    vertical-align: middle;
+
+}
+
+.menu-right {
+    float: right;
+    /*Exterior*/
+    width: 20px;
+    height: 20px;
+}
+
+.profile-text {
+    /*Exterior*/
+    color: #ddd;
+}
+
+.create-team-button {
+    /*Exterior*/
+    background-color: #4472c4;
+    color: #FFFFFF;
+    width: 200px;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+
+    /*position*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /*around*/
+    padding: 20px;
+    /*text*/
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.create-team-button:hover {
+    background-color: #365f9b;
+}
+
+.menu-icon {
+    display: none;
+}
+
+
+
+/*RWD not completed*/
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+        /* 隐藏sidebar */
+    }
+
+    .menu-icon {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+}
