@@ -22,7 +22,6 @@ const tooltipData = [
   [new Date(Date.now() - 3 * 86400000), , 3.6, 1.25, 2.4, 3],
   [new Date(Date.now()), , 2, 5.2, 5.2, 4.4]
 ];
-
 function App() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const toggleSettings = () => {
@@ -31,30 +30,28 @@ function App() {
 
   return (
     <Router>
+      {isSettingsOpen && (
+        <div className="overlay" onClick={toggleSettings}>
+          <div className='info-section'>
+            <OptionSection
+              isVisible={isSettingsOpen}
+              onClose={() => setIsSettingsOpen(false)}
+            />
+          </div>
+        </div>
+      )}
       <div className="app">
         <Sidebar toggleSettings={toggleSettings} />
+        <main className="content">
+          <Routes>
+            <Route path="/" element={<CreateTeamBlock />} />
+            <Route path="/team-overview" element={<TeamOverview />} />
+            <Route path="/PRDiscussion" element={<PRDiscussion />} />
+            <Route path="/branchchart" element={<BranchChart primaryData={primaryData} tooltipData={tooltipData} />} />
+          </Routes>
+        </main>
       </div>
-      <Routes>
-        <Route path="/" element={<CreateTeamBlock />} />
-        <Route path="/option" element={<OptionSection isVisible={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />} />
-        <Route path="/branchchart" element={<BranchChart primaryData={primaryData} tooltipData={tooltipData} />} />
-        <Route path="/team-overview" element={<TeamOverview />} />
-      </Routes>
     </Router>
-    // <>
-    //   {isSettingsOpen && (
-    //     <div className="overlay" onClick={toggleSettings}>
-    //       <div className='info-section'>
-    //         <OptionSection
-    //           isVisible={isSettingsOpen}
-    //           onClose={() => setIsSettingsOpen(false)}
-    //         />
-    //       </div>
-
-    //     </div>
-    //   )}
-
-    // </>
   );
 }
 
