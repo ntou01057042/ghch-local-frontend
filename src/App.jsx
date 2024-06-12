@@ -6,6 +6,7 @@ import OptionSection from './OptionSection';
 import BranchChart from './BranchChart';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import TeamOverview from './TeamOverview';
+import PRDiscussion from './PRDiscussion';
 
 const primaryData = [
   ['main', 'main', , new Date(2024, 2, 30), new Date(Date.now())],
