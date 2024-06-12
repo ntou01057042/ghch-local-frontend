@@ -10,9 +10,8 @@
     margin-bottom: 20px;
 }
 
-
 .avatar {
-    /*個人頭貼*/
+    /* 個人頭貼 */
     background: #ddd;
     border-radius: 50%;
     width: 60px;
@@ -24,14 +23,40 @@
     background-color: #f2f5ff;
     cursor: pointer;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 5px;
-    transition: background-color 0.3s;
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
+.menu-title {
+    transition: background-color 0.3s;
+    padding: 10px;
+}
+
+.menu-title a {
+    text-decoration: none;
+    color: inherit;
+
+}
 
 .submenu {
     padding-left: 20px;
+}
+
+.submenu div a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.submenu div a:hover {
+    background-color: #b2cce7;
+    color: #FFF;
 }
 
 .settings {
@@ -53,23 +78,22 @@
     width: 45px;
     height: 45px;
     vertical-align: middle;
-
 }
 
 .menu-right {
     float: right;
-    /*Exterior*/
+    /* Exterior */
     width: 20px;
     height: 20px;
 }
 
 .profile-text {
-    /*Exterior*/
+    /* Exterior */
     color: #ddd;
 }
 
 .create-team-button {
-    /*Exterior*/
+    /* Exterior */
     background-color: #4472c4;
     color: #FFFFFF;
     width: 200px;
@@ -77,18 +101,22 @@
     border: none;
     border-radius: 10px;
 
-    /*position*/
+    /* position */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    /*around*/
+    /* around */
     padding: 20px;
-    /*text*/
+    /* text */
     font-size: 15px;
     text-align: center;
-    text-decoration: none;
     overflow: hidden;
+}
+
+.create-team-button a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .create-team-button:hover {
@@ -99,13 +127,10 @@
     display: none;
 }
 
-
-
-/*RWD not completed*/
+/* RWD not completed */
 @media (max-width: 768px) {
     .sidebar {
         display: none;
-        /* 隐藏sidebar */
     }
 
     .menu-icon {
@@ -114,5 +139,4 @@
         top: 0;
         left: 0;
     }
-
 }

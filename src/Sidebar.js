@@ -28,8 +28,8 @@ const Sidebar = ({ toggleSettings }) => {
                     <div className="avatar"></div>
                     <div className="profile-text">我的團隊</div>
                 </div>
-                <div className="menu-item" onClick={() => toggleItem(1)}>
-                    <div className="menu-title">
+                <Link to="/team-overview" className="menu-item">
+                    <div className="menu-title" onClick={() => toggleItem(1)}>
                         專案1
                         {openIndexes.includes(1) ? (
                             <img className="menu-right" src="down-chevron.png" alt="向下" />
@@ -39,12 +39,13 @@ const Sidebar = ({ toggleSettings }) => {
                     </div>
                     {openIndexes.includes(1) && (
                         <div className="submenu">
-                            <div>Pull request #1 討論區</div>
-                            <div>Pull request #2 討論區</div>
+                            <div><Link to="/PRDiscussion">Pull request #1 討論區</Link></div>
+                            <div><Link to="/PRDiscussion">Pull request #2 討論區</Link></div>
+
                         </div>
                     )}
-                </div>
-                <div className="menu-item" onClick={() => toggleItem(2)}>
+                </Link>
+                <Link to="#" className="menu-item" onClick={() => toggleItem(2)}>
                     <div className="menu-title">
                         專案2
                         {openIndexes.includes(2) ? (
@@ -59,17 +60,7 @@ const Sidebar = ({ toggleSettings }) => {
                             <div>Pull request #2 討論區</div>
                         </div>
                     )}
-                </div>
-                <nav className="menu-item">
-                    <ul>
-                        <li><Link to="/team-overview">團隊綜觀圖</Link></li>
-                    </ul>
-                </nav>
-                <nav className="menu-item">
-                    <ul>
-                        <li><Link to="/PRDiscussion">PR 討論區</Link></li>
-                    </ul>
-                </nav>
+                </Link>
                 <div className="settings">
                     <button className="create-team-button"><Link to="/">建立新團隊</Link></button>
                     <div className="settings-icon" onClick={toggleSettings}></div>
